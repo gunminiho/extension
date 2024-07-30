@@ -1,0 +1,12 @@
+{
+    "manifest_version" : 3,
+    "name": "Mi primera extension de chrome",
+    "version": "1.0",
+    "description": "Esta es mi primera extension de chrome",
+    "icons": {
+        "128": "fazt.jpg"
+    },
+    "action":{
+        "default_popup": "index/popup.html"
+    }
+}
