@@ -1,12 +1,29 @@
 {
-    "manifest_version" : 3,
-    "name": "Mi primera extension de chrome",
+    "manifest_version": 3,
+    "name": "Auto fill Cecom",
     "version": "1.0",
-    "description": "Esta es mi primera extension de chrome",
-    "icons": {
-        "128": "fazt.jpg"
+    "description": "Extension para auto rellenar los campos fijos en los formularios de SIPCOP-M e Incidencias de SJL",
+    "action": {
+        "default_popup": "index/popup.html",
+        "default_icon": {
+            "128": "/assets/img/logo.jpg"
+        }
     },
-    "action":{
-        "default_popup": "index/popup.html"
-    }
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "./assets/js/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://192.168.13.80:81/incidencias/mapa"
+            ],
+            "js": [
+                "./assets/js/content.js"
+            ]
+        }
+    ]
 }

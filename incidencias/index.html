@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <title>Incidencias SJL</title>
+</head>
+
+<body>
+    <h1>Complete sus datos:</h1>
+    <form id="dataForm">
+        <table>
+            <th style="text-align: start;">Campo</th>
+            <th style="text-align: start;">Valor</th>
+            <tr>
+                <td>Unidades de atencion</td>
+                <td>
+                    <select id="select_unidad">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">Seguridad Ciudadana</option>
+                        <option value="2">Fiscalizacion</option>
+                        <option value="3">Transportes</option>
+                        <option value="10002">Consultas-Telefonia</option>
+                    </select>
+                </td>
+            </tr>   
+            <tr>
+                <td>Tipo</td>
+                <td>
+                    <select id="selet_tipo_reportante">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">Por ciudadano</option>
+                        <option value="2">Sereno</option>
+                        <option value="4">Operador</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Medio de Reporte</td>
+                <td>
+                    <select id="select_medio_report">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">Radio</option>
+                        <option value="3">Telefono</option>
+                        <option value="4">Camara</option>
+                        <option value="8">Whatsapp-Cecom</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Operador</td>
+                <td>
+                    <input id="select_operador2" placeholder="Nombre igual al del sistema" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>Fecha de Ocurrencia</td>
+                <td>
+                    <input id="fecha_ocurrencia" type="date" />
+                </td>
+            </tr>
+            <tr>
+                <td>Prioridad</td>
+                <td>
+                    <select id="select_severidad">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">ACTOS DELICTIVOS - PRIORIDAD 01</option>
+                        <option value="2">LIBERACIÓN DE ESPACIOS PÚBLICOS - PRIORIDAD 02</option>
+                        <option value="3">ACCIDENTES DE TRANSITO - PRIORIDAD 03</option>
+                        <option value="4">APOYOS BRINDADOS - PRIORIDAD 04</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Situacion</td>
+                <td>
+                    <select id="select_estado">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">Pendiente</option>
+                        <option value="3">Atendida</option>
+                        <option value="5">Repetido</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Asignado a</td>
+                <td>
+                    <select id="operador_id">
+                        <option value="0">Selecciona una opcion</option>
+                        <option value="1">OPERADOR-CAMARA-1</option>
+                        <option value="2">OPERADOR-CAMARA-2</option>
+                        <option value="3">OPERADOR-CAMARA-3</option>
+                        <option value="4">OPERADOR-CAMARA-4</option>
+                        <option value="5">OPERADOR-CAMARA-5</option>
+                        <option value="6">OPERADOR-CAMARA-6</option>
+                    </select>
+                </td>
+            </tr>
+
+        </table>
+        <div class="buttons">
+            <button type="submit">Guardar</button><button type="reset">Borrar datos</button><a href="../index/popup.html">Atras</a>
+        </div>
+    </form>
+    <script src="../assets/js/set_data.js"></script>
+</body>
+
+</html>
