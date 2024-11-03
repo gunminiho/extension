@@ -1,35 +1,39 @@
-document.getElementById("dataForm").addEventListener("submit",(e)=>{
+document.getElementById("dataForm").addEventListener("submit", (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    // obtener valores de los campos del formulario
+  // obtener valores de los campos del formulario
 
-    const select_unidad = document.getElementById("select_unidad").value;
-    const selet_tipo_reportante = document.getElementById("selet_tipo_reportante").value;
-    const select_medio_report = document.getElementById("select_medio_report").value;
-    const select_operador2 = document.getElementById("select_operador2").value;
-    const fecha_ocurrencia = document.getElementById("fecha_ocurrencia").value;
-    const select_severidad = document.getElementById('select_severidad').value;
-    const select_estado = document.getElementById('select_estado').value;
-    const operador_id = document.getElementById('operador_id').value;
+  const select_unidad = document.getElementById("select_unidad").value;
+  const selet_tipo_reportante = document.getElementById("selet_tipo_reportante").value;
+  const select_medio_report = document.getElementById("select_medio_report").value;
+  const select_operador2 = document.getElementById("select_operador2").value;
+  const fecha_ocurrencia = document.getElementById("fecha_ocurrencia").value;
+  const select_severidad = document.getElementById('select_severidad').value;
+  const select_estado = document.getElementById('select_estado').value;
+  const operador_id = document.getElementById('operador_id').value;
+  // const coordenadas = document.getElementById('coordenadas').value;
+  // const check_centerMap = document.getElementById('check_centerMap').checked;
 
-      // Crear un objeto con los datos
-      const formData = {
-        select_unidad,
-        selet_tipo_reportante,
-        select_medio_report,
-        select_operador2,
-        fecha_ocurrencia,
-        select_severidad,
-        select_estado,
-        operador_id
-    };
+  // Crear un objeto con los datos
+  const formData = {
+    select_unidad,
+    selet_tipo_reportante,
+    select_medio_report,
+    select_operador2,
+    fecha_ocurrencia,
+    select_severidad,
+    select_estado,
+    operador_id,
+    // coordenadas,
+    // check_centerMap
+  };
 
-     // Guardar los datos en el almacenamiento de Chrome
-     chrome.storage.sync.set({ formData }, () => {
-        console.log('Datos guardados:', formData);
-        alert('Datos guardados exitosamente!');
-    });
+  // Guardar los datos en el almacenamiento de Chrome
+  chrome.storage.sync.set({ formData }, () => {
+    console.log('Datos guardados:', formData);
+    alert('Datos guardados exitosamente!');
+  });
 
 });
 
@@ -85,11 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isNaN(date.getTime())) {
         const año = date.getFullYear();
         const mes = String(date.getMonth() + 1).padStart(2, '0');
-        const día = String(date.getDate()+1).padStart(2, '0');
+        const día = String(date.getDate() + 1).padStart(2, '0');
         return `${año}-${mes}-${día}`;
       }
       return null;
     }
+
+
+
 
     // Asignar valores guardados al formulario
     verificarYAsignarValor(document.getElementById('select_unidad'), formData.select_unidad, 'select_unidad');
@@ -101,6 +108,42 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarYAsignarValor(document.getElementById('select_estado'), formData.select_estado, 'select_estado');
     verificarYAsignarValor(document.getElementById('operador_id'), formData.operador_id, 'operador_id');
   });
+
+  function CenterMap(latitude, longitude, mapContainer) {
+    
+    if (mapContainer && mapContainer._leaflet_id) {
+      const map = L.Map._instance[mapContainer._leaflet_id]
+
+      const lat = latitude
+      const lng = longitude
+      map.setView([lat, lng], 18);
+    } else {
+      console.error('No se pudo obtener el mapa.');
+    }
+  }
+
+  const check_centerMap = document.getElementById('check_centerMap');
+  let intervaloCentrado
+
+  check_centerMap.addEventListener('change', () => {
+    if (check_centerMap.checked) {
+      intervaloCentrado = setInterval(() => {
+        const coordenadas = document.getElementById('coordenadas').value;
+        const map = document.getElementById('map');
+        console.log("mapa", map);
+
+        const [lat, lng] = coordenadas.split(',');
+
+
+        CenterMap(lat, lng, map);
+      }, 1000);
+
+    } else {
+      clearInterval(intervaloCentrado);
+
+    }
+
+  })
 });
 
 
