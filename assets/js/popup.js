@@ -4,9 +4,8 @@ function cargarDatosGuardados() {
             console.log('No hay datos guardados.');
             return;
         }
-        else
-        {
-            
+        else {
+
         }
 
         console.log('Cargando datos guardados:', formData);
@@ -21,3 +20,4 @@ function cargarDatosGuardados() {
         document.getElementById('asignadoA').value = formData.asignadoA || 0;
     });
 }
+

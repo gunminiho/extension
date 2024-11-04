@@ -109,41 +109,53 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarYAsignarValor(document.getElementById('operador_id'), formData.operador_id, 'operador_id');
   });
 
-  function CenterMap(latitude, longitude, mapContainer) {
-    
-    if (mapContainer && mapContainer._leaflet_id) {
-      const map = L.Map._instance[mapContainer._leaflet_id]
+  // function CenterMap(latitude, longitude, mapContainer) {
 
-      const lat = latitude
-      const lng = longitude
-      map.setView([lat, lng], 18);
-    } else {
-      console.error('No se pudo obtener el mapa.');
-    }
-  }
+  //   if (mapContainer && mapContainer._leaflet_id) {
+  //     const map = L.Map._instance[mapContainer._leaflet_id]
 
-  const check_centerMap = document.getElementById('check_centerMap');
-  let intervaloCentrado
+  //     const lat = latitude
+  //     const lng = longitude
+  //     map.setView([lat, lng], 18);
+  //   } else {
+  //     console.error('No se pudo obtener el mapa.');
+  //   }
+  // }
 
-  check_centerMap.addEventListener('change', () => {
-    if (check_centerMap.checked) {
-      intervaloCentrado = setInterval(() => {
-        const coordenadas = document.getElementById('coordenadas').value;
-        const map = document.getElementById('map');
-        console.log("mapa", map);
+  // const check_centerMap = document.getElementById('check_centerMap');
+  // let intervaloCentrado
 
-        const [lat, lng] = coordenadas.split(',');
+  // check_centerMap.addEventListener('change', () => {
+  //   if (check_centerMap.checked) {
+  //     intervaloCentrado = setInterval(() => {
+  //       const coordenadas = document.getElementById('coordenadas').value;
+  //       const map = document.getElementById('map');
+  //       console.log("mapa", map);
+
+  //       const [lat, lng] = coordenadas.split(',');
 
 
-        CenterMap(lat, lng, map);
-      }, 1000);
+  //       CenterMap(lat, lng, map);
 
-    } else {
-      clearInterval(intervaloCentrado);
+  //     }, 1000);
 
-    }
+  //   } else {
+  //     clearInterval(intervaloCentrado);
 
-  })
+  //   }
+
+  // })
+
+  // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  //   if (message.action === 'moveToCoordinate') {
+  //     const { lat, lng } = message;
+  //     const map = document.getElementById('map'); // Asume que tienes un contenedor con id="map"
+  //     CenterMap(lat, lng, map);
+  //     sendResponse({ status: 'Mapa centrado y marcador añadido' });
+  //   }
+  // });
+
+
 });
 
 
